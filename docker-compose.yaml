@@ -1,0 +1,59 @@
+# path: ./docker-compose.yaml
+version: "3.9"
+services:
+  #nestjs-app:
+   # build:
+    #  context: .
+     # dockerfile: Dockerfile
+   # command: npm run start:dev  
+   # ports:
+    #  - "7006:7006"
+   # depends_on:
+    #  - postgres
+     # - mongo
+      #- redis
+
+  postgres:
+    image: postgres:latest
+    restart: always
+    env_file:
+      - .env
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    ports:
+      - ${DB_PORT}:5432
+    volumes:
+      - dockerpath:/var/lib/postgresql/data
+    networks:
+      - db_network
+
+  mongo:
+    image: mongo:latest
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - ${MONGODB_PORT}:27017  
+    environment:
+      - MONGO_INITDB_DATABASE=${MONGO_INITDB_DATABASE} 
+    volumes:
+      - mongo_data2:/data/db
+    networks:
+      - db_network
+  
+  redis:
+    image: redis:latest
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - ${REDIS_PORT}:6379
+
+volumes:
+  dockerpath:
+  mongo_data2:
+
+networks:
+  db_network:
