@@ -17,9 +17,14 @@
 ### APPLICATION 
 ===============================================
 ###### To run the application
+(PART A)
+#### N.B the environment variable are in .env.sample
+#### To Run the app using the docker image , simply run ``docker-compose up``.
+ 
+(PART B)
+#### In case the above didn't work, use the procedure below
+1. run ``docker-compose up``  to run the database images and redis
 
-1. run ``Docker-compose up``  to run the database images and redis
-
-2. run ``npm install`` on new terminal to download the node dependencies
+2. run ``npm install`` on separate terminal to download the node dependencies
 
 3. run ``npm start:dev`` to start up the application

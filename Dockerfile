@@ -1,5 +1,5 @@
-# Use Node.js as base image
-FROM node:latest
+# Use Node.js 16 on Ubuntu as the base image
+FROM node:16
 
 # Set working directory
 WORKDIR /app

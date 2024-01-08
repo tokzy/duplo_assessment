@@ -1,17 +1,23 @@
 # path: ./docker-compose.yaml
 version: "3.9"
 services:
-  #nestjs-app:
-   # build:
-    #  context: .
-     # dockerfile: Dockerfile
-   # command: npm run start:dev  
-   # ports:
-    #  - "7006:7006"
-   # depends_on:
-    #  - postgres
-     # - mongo
-      #- redis
+  nestjs-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: npm run start:dev  
+    env_file:
+      - .env
+    ports:
+      - 7006:7006
+    networks:
+      - db_network
+    volumes:
+      - ./app:/usr/src/app
+    depends_on:
+      - postgres
+      - mongo
+      - redis
 
   postgres:
     image: postgres:latest
