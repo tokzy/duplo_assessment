@@ -19,7 +19,8 @@
 ###### To run the application
 (PART A)
 #### N.B the environment variable are in .env.sample
-#### To Run the app using the docker image , simply run ``docker-compose up``.
+#### ensure you create the .env file in the root folder and populate the variables before starting the app
+#### To Run the app using the docker image , simply enter the command ``docker-compose up``.
  
 (PART B)
 #### In case the above didn't work, use the procedure below
